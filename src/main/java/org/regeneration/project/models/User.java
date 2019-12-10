@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Entity
 @Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "username"}))
 public class User implements Serializable {
+
     private Long id;
     private String firstName;
     private String lastName;
@@ -49,6 +50,7 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    
     public String getEmail() {
         return email;
     }
