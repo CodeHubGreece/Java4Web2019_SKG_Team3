@@ -11,7 +11,7 @@ public class Doctor implements Serializable {
     private Long id;
     private Speciality speciality;
     private User user;
-    private List<Appointment> appointments = new ArrayList<Appointment>();
+    private List<Appointment> appointments = new ArrayList<>();
 
     public Doctor() {}
 
