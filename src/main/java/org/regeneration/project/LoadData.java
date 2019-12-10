@@ -15,7 +15,7 @@ public class LoadData {
 
     @Bean
     CommandLineRunner initDatabase(PasswordEncoder passwordEncoder, CitizenRepository citizenRepository,
-                                   DoctorRepository doctorRepository, SpecialitiesRepository specialitiesRepository,
+                                   DoctorRepository doctorRepository, SpecialityRepository specialityRepository,
                                    AppointmentRepository appointmentRepository) {
         return args -> {
             Speciality dermatologist = new Speciality("Dermatologist");
@@ -25,7 +25,7 @@ public class LoadData {
             Speciality pediatrist = new Speciality("Pediatrist");
             Speciality psychiatrist = new Speciality("Psychiatrist");
             Speciality surgeon = new Speciality("Surgeon");
-            specialitiesRepository.saveAll(Arrays.asList(dermatologist, neurologist, gynecologist,
+            specialityRepository.saveAll(Arrays.asList(dermatologist, neurologist, gynecologist,
                     pathologist, pediatrist, psychiatrist, surgeon));
 
             User userCitizenA = new User(
