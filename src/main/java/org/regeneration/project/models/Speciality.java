@@ -37,7 +37,7 @@ public class Speciality implements Serializable {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "appointments")
+    @OneToMany(mappedBy = "speciality")
     public List<Doctor> getDoctors() {
         return doctors;
     }

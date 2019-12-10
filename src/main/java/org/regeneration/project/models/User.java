@@ -17,6 +17,8 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String userType;
+    private Citizen citizen;
+    private Doctor doctor;
 
     public User() {}
 
@@ -89,4 +91,16 @@ public class User implements Serializable {
     public void setUserType(String userType) {
         this.userType = userType;
     }
+
+    @OneToOne(mappedBy = "user")
+    public Citizen getCitizen() {
+        return citizen;
+    }
+    public void setCitizen(Citizen citizen) { this.citizen = citizen; }
+
+    @OneToOne(mappedBy = "user")
+    public Doctor getDoctor() {
+        return doctor;
+    }
+    public void setDoctor(Doctor doctor) { this.doctor = doctor; }
 }
