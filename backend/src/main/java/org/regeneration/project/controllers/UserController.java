@@ -6,8 +6,8 @@ import org.regeneration.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -15,10 +15,11 @@ public class UserController {
 
     private UserService userService;
 
-    public UserController(@Autowired UserService userService) {
+    public UserController(@Autowired UserService userService){
         this.userService = userService;
     }
 
+<<<<<<< Updated upstream:backend/src/main/java/org/regeneration/project/controllers/UserController.java
     public UserController() {
 
     }
@@ -35,31 +36,31 @@ public class UserController {
         return user;
     }
 
+=======
+>>>>>>> Stashed changes:src/main/java/org/regeneration/project/controllers/UserController.java
     @GetMapping("")
-    public List<User> getUsers() {
-        return Arrays.asList(dummyUser(1L), dummyUser(2L));
+    public List<User> getUsers(){
+        return  userService.getAllUsers();
     }
 
+    //Single Item
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        System.out.println(id);
-        return dummyUser(id);
+    public Optional<User> getOneUser(@PathVariable Long id){
+        return userService.getOneUser(id);
     }
 
     @PostMapping("")
-    public User createUser(@RequestBody User user) {
-        return user;
+    public User getNewUser(@RequestBody User newUser){
+         return userService.postNewUser(newUser);
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        System.out.println(id);
-        return user;
+    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
+        return userService.updateUser(newUser, id);
     }
 
     @DeleteMapping("/{id}")
-    public User deleteUser(@PathVariable Long id) {
-        System.out.println(id);
-        return dummyUser(id);
+    public void deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
     }
 }

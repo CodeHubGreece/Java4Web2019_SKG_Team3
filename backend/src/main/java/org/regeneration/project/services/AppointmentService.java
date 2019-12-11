@@ -1,40 +1,49 @@
 package org.regeneration.project.services;
 
+
 import org.regeneration.project.models.Appointment;
+import org.regeneration.project.models.Doctor;
 import org.regeneration.project.repositories.AppointmentRepository;
+import org.regeneration.project.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class AppointmentService {
 
-    @Autowired
     private AppointmentRepository appointmentRepository;
 
+    public AppointmentService(@Autowired AppointmentRepository appointmentRepository){this.appointmentRepository = appointmentRepository;}
+
+    //GET ALL Appointments
     public List<Appointment> getAllAppointments(){
-        List<Appointment> appointments = new ArrayList<>();
-        appointmentRepository.findAll().forEach(appointments::add);
-        return appointments;
+        return appointmentRepository.findAll();
     }
 
-    public Optional<Appointment> getAppointment(Long id){
+    //POST NEW USER
+    public Appointment postNewAppointment(Appointment newAppointment){ return appointmentRepository.save(newAppointment);}
+
+    //GET ONE USER
+    public Optional<Appointment> getOneAppointment(Long id){
         return appointmentRepository.findById(id);
     }
 
-    public void addAppointment(Appointment appointment){
-        appointmentRepository.save(appointment);
-    }
+    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
+//    public Doctor updateDoctor(Doctor newDoctor, Long id){
+//        return doctorRepository.findById(id)
+//                .map(doctor-> {
+//
+//                })
+//                .orElseGet(() -> {
+//
+//                });
+//    }
 
-    public void updateAppointment(Long id, Appointment appointment){
-        appointmentRepository.save(appointment);
-    }
-
+    //DELETE ONE USER
     public void deleteAppointment(Long id){
         appointmentRepository.deleteById(id);
     }
-
 }

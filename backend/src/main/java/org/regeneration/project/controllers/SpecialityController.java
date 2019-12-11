@@ -9,33 +9,35 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/speciality")
 public class SpecialityController {
 
-    @Autowired
     private SpecialityService specialityService;
 
-    @GetMapping("/specialities")
-    public List<Speciality> getAllSpecialities(){
-        return specialityService.getAllSpecialities();
+    public SpecialityController(@Autowired SpecialityService specialityService){
+        this.specialityService = specialityService;
     }
 
-    @GetMapping("/specialities/{id}")
-    public Optional<Speciality> getSpeciality(@PathVariable Long id){
-        return specialityService.getSpeciality(id);
+    @GetMapping("")
+    public List<Speciality> getSpeciality(){
+        return  specialityService.getAllSpecialities();
     }
 
-    @PostMapping("/specialities")
-    public void addSpeciality(@RequestBody Speciality speciality){
-        specialityService.addSpeciality(speciality);
+    //Single Item
+    @GetMapping("/{id}")
+    public Optional<Speciality> getOneSpeciality(@PathVariable Long id){return specialityService.getOneSpeciality(id);}
+
+    @PostMapping("")
+    public Speciality getNewSpeciality(@RequestBody Speciality newSpeciality){
+        return specialityService.postNewSpeciality(newSpeciality);
     }
 
-    @PutMapping("/specialities{id}")
-    public void updateSpeciality(@RequestBody Long id, @RequestBody Speciality speciality){
-        specialityService.updateSpeciality(id, speciality);
-    }
+//    @PutMapping("/{id}")
+//    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
+//        return userService.updateUser(newUser, id);
+//    }
 
-    @DeleteMapping ("/specialities{id}")
-    public void deleteSpeciality(@RequestBody Long id){
-        specialityService.deleteSpeciality(id);
-    }
+    @DeleteMapping("/{id}")
+    public void deleteSpeciality(@PathVariable Long id){ specialityService.deleteSpeciality(id);}
 }
+

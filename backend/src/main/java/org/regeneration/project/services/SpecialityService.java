@@ -1,40 +1,46 @@
 package org.regeneration.project.services;
 
+
 import org.regeneration.project.models.Speciality;
 import org.regeneration.project.repositories.SpecialityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class SpecialityService {
 
-    @Autowired
     private SpecialityRepository specialityRepository;
 
+    public SpecialityService(@Autowired SpecialityRepository specialityRepository){this.specialityRepository = specialityRepository;}
+
     public List<Speciality> getAllSpecialities(){
-        List<Speciality> specialities = new ArrayList<>();
-        specialityRepository.findAll().forEach(specialities::add);
-        return specialities;
+        return specialityRepository.findAll();
     }
 
-    public Optional<Speciality> getSpeciality(Long id){
+    //POST NEW USER
+    public Speciality postNewSpeciality(Speciality newSpeciality){ return specialityRepository.save(newSpeciality);}
+
+    //GET ONE USER
+    public Optional<Speciality> getOneSpeciality(Long id){
         return specialityRepository.findById(id);
     }
 
-    public void addSpeciality(Speciality speciality){
-        specialityRepository.save(speciality);
-    }
+    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
+//    public Doctor updateDoctor(Doctor newDoctor, Long id){
+//        return doctorRepository.findById(id)
+//                .map(doctor-> {
+//
+//                })
+//                .orElseGet(() -> {
+//
+//                });
+//    }
 
-    public void updateSpeciality(Long id, Speciality speciality){
-        specialityRepository.save(speciality);
-    }
-
+    //DELETE ONE USER
     public void deleteSpeciality(Long id){
         specialityRepository.deleteById(id);
     }
-
 }
