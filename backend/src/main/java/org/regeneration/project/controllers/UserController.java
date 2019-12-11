@@ -19,7 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-<<<<<<< Updated upstream:backend/src/main/java/org/regeneration/project/controllers/UserController.java
     public UserController() {
 
     }
@@ -36,8 +35,6 @@ public class UserController {
         return user;
     }
 
-=======
->>>>>>> Stashed changes:src/main/java/org/regeneration/project/controllers/UserController.java
     @GetMapping("")
     public List<User> getUsers(){
         return  userService.getAllUsers();
@@ -55,8 +52,8 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
-        return userService.updateUser(newUser, id);
+    public void updateUser(@RequestBody User newUser, @PathVariable Long id){
+//        return userService.updateUser(newUser, id);
     }
 
     @DeleteMapping("/{id}")

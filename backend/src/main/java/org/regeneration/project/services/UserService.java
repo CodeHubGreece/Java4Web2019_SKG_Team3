@@ -30,20 +30,20 @@ public class UserService {
     }
 
     //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
-    public User updateUser(User newUser, Long id){
-        return userRepository.findById(id)
-                .map(user -> {
-                    user.setFirst_name(newUser.getFirst_name());
-                    user.setLast_name((newUser.getLast_name()));
-                    user.setUsername((newUser.getUsername()));
-                    user.setPassword(newUser.getPassword());
-                    user.setEmail(newUser.getEmail());
-                    return userRepository.save(user);
-                })
-                .orElseGet(() -> {
-                    newUser.setId(id);
-                    return  userRepository.save(newUser);
-                });
+    public void updateUser(User newUser, Long id){
+//        return userRepository.findById(id)
+////                .map(user -> {
+////                    user.setFirstName(newUser.setFirstName());
+////                    user.setLastName((newUser.setLastName()));
+////                    user.setUsername((newUser.getUsername()));
+////                    user.setPassword(newUser.getPassword());
+////                    user.setEmail(newUser.getEmail());
+////                    return userRepository.save(user);
+////                })
+////                .orElseGet(() -> {
+////                    newUser.setId(id);
+////                    return  userRepository.save(newUser);
+////                });
     }
 
     //DELETE ONE USER

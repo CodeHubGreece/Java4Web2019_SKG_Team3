@@ -7,21 +7,25 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import java.util.Optional;
+
 public class ApiUserDetailsService implements UserDetailsService {
 
-    @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    public ApiUserDetailsService(@Autowired UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        User user = userRepository.findByUsername(username);
+        Optional<User> user = userRepository.findByUsername(username);
 
-        if (user == null) {
+        if (!user.isPresent()) {
             throw new UsernameNotFoundException("username not found");
         }
 
-        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword());
-        return userDetails;
+        return new ApiUserDetails(user.get().getUsername(), user.get().getPassword());
     }
 
 }
