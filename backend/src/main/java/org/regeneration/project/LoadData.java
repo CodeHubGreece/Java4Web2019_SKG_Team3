@@ -34,7 +34,7 @@ public class LoadData {
                     "citizenA@gmail.com",
                     "citizenA",
                     passwordEncoder.encode("citizen"),
-                    "CITIZEN");
+                    UserType.CITIZEN);
             Citizen citizenA = new Citizen("12345678901", "1234567890", userCitizenA);
             User userCitizenB = new User(
                     "CitizenB",
@@ -42,7 +42,7 @@ public class LoadData {
                     "citizenB@gmail.com",
                     "citizenB",
                     passwordEncoder.encode("citizen"),
-                    "CITIZEN");
+                    UserType.CITIZEN);
             Citizen citizenB = new Citizen("12345678901", "1234567890", userCitizenB);
             User userCitizenC = new User(
                     "CitizenC",
@@ -50,7 +50,7 @@ public class LoadData {
                     "citizenC@gmail.com",
                     "citizenC",
                     passwordEncoder.encode("citizen"),
-                    "CITIZEN");
+                    UserType.CITIZEN);
             Citizen citizenC = new Citizen("12345678901", "1234567890", userCitizenC);
             citizenRepository.saveAll(Arrays.asList(citizenA, citizenB, citizenC));
 
@@ -60,7 +60,7 @@ public class LoadData {
                     "doctorA@gmail.com",
                     "doctorA",
                     passwordEncoder.encode("doctor"),
-                    "DOCTOR");
+                    UserType.DOCTOR);
             Doctor doctorA = new Doctor(dermatologist, userDoctorA);
 
             User userDoctorB = new User(
@@ -69,7 +69,7 @@ public class LoadData {
                     "doctorB@gmail.com",
                     "doctorB",
                     passwordEncoder.encode("doctor"),
-                    "DOCTOR");
+                    UserType.DOCTOR);
             Doctor doctorB = new Doctor(gynecologist, userDoctorB);
 
             User userDoctorC = new User(
@@ -78,7 +78,7 @@ public class LoadData {
                     "doctorC@gmail.com",
                     "doctorC",
                     passwordEncoder.encode("doctor"),
-                    "DOCTOR");
+                    UserType.DOCTOR);
             Doctor doctorC = new Doctor(neurologist, userDoctorC);
             doctorRepository.saveAll(Arrays.asList(doctorA, doctorB, doctorC));
 

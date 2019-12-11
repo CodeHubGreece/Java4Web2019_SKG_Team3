@@ -3,10 +3,6 @@ package org.regeneration.project.models;
 import javax.persistence.*;
 import java.io.Serializable;
 
-//enum UserType {
-//    CITIZEN, DOCTOR
-//}
-
 @Entity
 @Table(name="users", uniqueConstraints = @UniqueConstraint(columnNames = {"email", "username"}))
 public class User implements Serializable {
@@ -16,13 +12,13 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
-    private String userType;
+    private UserType userType;
     private Citizen citizen;
     private Doctor doctor;
 
     public User() {}
 
-    public User(String firstName, String lastName, String email, String username, String password, String userType) {
+    public User(String firstName, String lastName, String email, String username, String password, UserType userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -84,11 +80,12 @@ public class User implements Serializable {
     }
 
     @Column(name = "user_type")
-    public String getUserType() {
+    @Enumerated(EnumType.STRING)
+    public UserType getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(UserType userType) {
         this.userType = userType;
     }
 
