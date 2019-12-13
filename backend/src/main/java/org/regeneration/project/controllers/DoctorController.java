@@ -9,32 +9,36 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/doctor")
 public class DoctorController {
-    @Autowired
+
     private DoctorService doctorService;
 
-    @GetMapping("/doctors")
-    public List<Doctor> getAllDoctor(){
-        return doctorService.getAllDoctors();
+    public DoctorController(@Autowired DoctorService doctorService){
+        this.doctorService = doctorService;
     }
 
-    @GetMapping("/doctors/{id}")
-    public Optional<Doctor> getDoctor(@PathVariable Long id){
-        return doctorService.getDoctor(id);
+    @GetMapping("")
+    public List<Doctor> getDoctor(){
+        return  doctorService.getAllDoctors();
     }
 
-    @PostMapping("/doctors")
-    public void addDoctor(@RequestBody Doctor doctor){
-        doctorService.addDoctor(doctor);
+    //Single Item
+    @GetMapping("/{id}")
+    public Optional<Doctor> getOneDoctor(@PathVariable Long id){
+        return doctorService.getOneDoctor(id);
     }
 
-    @PutMapping("/doctors{id}")
-    public void updateDoctor(@RequestBody Long id, @RequestBody Doctor doctor){
-        doctorService.updateDoctor(id, doctor);
+    @PostMapping("")
+    public Doctor getNewDoctor(@RequestBody Doctor newDoctor){
+        return doctorService.postNewDoctor(newDoctor);
     }
 
-    @DeleteMapping ("/doctors{id}")
-    public void deleteDoctor(@RequestBody Long id){
-        doctorService.deleteDoctor(id);
-    }
+//    @PutMapping("/{id}")
+//    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
+//        return userService.updateUser(newUser, id);
+//    }
+
+    @DeleteMapping("/{id}")
+    public void deleteDoctor(@PathVariable Long id){ doctorService.deleteDoctor(id);}
 }

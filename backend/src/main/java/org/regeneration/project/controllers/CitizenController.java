@@ -1,6 +1,7 @@
 package org.regeneration.project.controllers;
 
 import org.regeneration.project.models.Citizen;
+import org.regeneration.project.models.User;
 import org.regeneration.project.services.CitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -9,34 +10,38 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/citizen")
 public class CitizenController {
 
-    @Autowired
     private CitizenService citizenService;
 
-    @GetMapping("/citizens")
-    public List<Citizen> getAllCitizens(){
-        return citizenService.getAllCitizens();
+    public CitizenController(@Autowired CitizenService citizenService){
+        this.citizenService = citizenService;
     }
 
-    @GetMapping("/citizens/{id}")
-    public Optional<Citizen> getCitizen(@PathVariable Long id){
-        return citizenService.getCitizen(id);
+    @GetMapping("")
+    public List<Citizen> getCitizen(){
+        return  citizenService.getAllCitizens();
     }
 
-    @PostMapping("/citizens")
-    public void addCitizen(@RequestBody Citizen citizen){
-        citizenService.addCitizen(citizen);
+    //Single Item
+    @GetMapping("/{id}")
+    public Optional<Citizen> getOneCitizen(@PathVariable Long id){
+        return citizenService.getOneCitizen(id);
     }
 
-    @PutMapping("/citizens{id}")
-    public void updateCitizen(@RequestBody Long id, @RequestBody Citizen citizen){
-        citizenService.updateCitizen(id, citizen);
+    @PostMapping("")
+    public Citizen getNewCitizen(@RequestBody Citizen newCitizen){
+        return citizenService.postNewCitizen(newCitizen);
     }
 
-    @DeleteMapping ("/citizens{id}")
-    public void deleteCitizen(@RequestBody Long id){
+//    @PutMapping("/{id}")
+//    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
+//        return userService.updateUser(newUser, id);
+//    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCitizen(@PathVariable Long id){
         citizenService.deleteCitizen(id);
     }
-
 }

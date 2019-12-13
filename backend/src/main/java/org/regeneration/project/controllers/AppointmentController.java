@@ -9,34 +9,34 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/appointment")
 public class AppointmentController {
 
-    @Autowired
     private AppointmentService appointmentService;
 
-    @GetMapping("/appointments")
-    public List<Appointment> getAllAppointments(){
-        return appointmentService.getAllAppointments();
+    public AppointmentController(@Autowired AppointmentService appointmentService){ this.appointmentService = appointmentService; }
+
+    @GetMapping("")
+    public List<Appointment> getAppointment(){
+        return  appointmentService.getAllAppointments();
     }
 
-    @GetMapping("/appointments/{id}")
-    public Optional<Appointment> getAppointment(@PathVariable Long id){
-        return appointmentService.getAppointment(id);
+    //Single Item
+    @GetMapping("/{id}")
+    public Optional<Appointment> getOneAppointment(@PathVariable Long id){ return appointmentService.getOneAppointment(id);}
+
+    @PostMapping("")
+    public Appointment getNewAppointment(@RequestBody Appointment newAppointment){
+        return appointmentService.postNewAppointment(newAppointment);
     }
 
-    @PostMapping("/appointments")
-    public void addAppointment(@RequestBody Appointment appointment){
-        appointmentService.addAppointment(appointment);
-    }
+//    @PutMapping("/{id}")
+//    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
+//        return userService.updateUser(newUser, id);
+//    }
 
-    @PutMapping("/appointments{id}")
-    public void updateAppointment(@RequestBody Long id, @RequestBody Appointment appointment){
-        appointmentService.updateAppointment(id, appointment);
-    }
-
-    @DeleteMapping ("/appointments{id}")
-    public void deleteAppointment(@RequestBody Long id){
+    @DeleteMapping("/{id}")
+    public void deleteAppointment(@PathVariable Long id){
         appointmentService.deleteAppointment(id);
     }
-
 }

@@ -1,37 +1,48 @@
 package org.regeneration.project.services;
 
+
 import org.regeneration.project.models.Doctor;
 import org.regeneration.project.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DoctorService {
 
-    @Autowired
     private DoctorRepository doctorRepository;
 
+    public DoctorService(@Autowired DoctorRepository doctorRepository){this.doctorRepository = doctorRepository;}
+
+    //GET ALL Doctors
     public List<Doctor> getAllDoctors(){
-        List<Doctor> doctors = new ArrayList<>();
-        doctorRepository.findAll().forEach(doctors::add);
-        return doctors;
+        return doctorRepository.findAll();
     }
 
-    public Optional<Doctor> getDoctor(Long id){
+    //POST NEW USER
+    public Doctor postNewDoctor(Doctor newDoctor){
+        return doctorRepository.save(newDoctor);
+    }
+
+    //GET ONE USER
+    public Optional<Doctor> getOneDoctor(Long id){
         return doctorRepository.findById(id);
     }
 
-    public void addDoctor(Doctor doctor){
-        doctorRepository.save(doctor);
-    }
+    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
+//    public Doctor updateDoctor(Doctor newDoctor, Long id){
+//        return doctorRepository.findById(id)
+//                .map(doctor-> {
+//
+//                })
+//                .orElseGet(() -> {
+//
+//                });
+//    }
 
-    public void updateDoctor(Long id, Doctor doctor){
-        doctorRepository.save(doctor);
-    }
-
+    //DELETE ONE USER
     public void deleteDoctor(Long id){
         doctorRepository.deleteById(id);
     }
