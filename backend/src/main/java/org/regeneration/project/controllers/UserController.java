@@ -1,11 +1,9 @@
 package org.regeneration.project.controllers;
 
 import org.regeneration.project.models.User;
-import org.regeneration.project.models.UserType;
 import org.regeneration.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,21 +17,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    public UserController() {
-
-    }
-
-    private User dummyUser(Long id) {
-        User user = new User();
-        user.setId(id);
-        user.setFirstName("George");
-        user.setLastName("Kostopoulos");
-        user.setEmail("George.Kst@icloud.com");
-        user.setUsername("georgekst");
-        user.setPassword("somepassword");
-        user.setUserType(UserType.CITIZEN);
-        return user;
-    }
+    public UserController() {}
 
     @GetMapping("")
     public List<User> getUsers(){
