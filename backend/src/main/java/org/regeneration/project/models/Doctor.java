@@ -1,5 +1,7 @@
 package org.regeneration.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -41,6 +43,7 @@ public class Doctor implements Serializable {
         this.speciality = speciality;
     }
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     public User getUser() {

@@ -1,5 +1,8 @@
 package org.regeneration.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -71,9 +74,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
+
     public String getPassword() {
         return password;
     }
+
 
     public void setPassword(String password) {
         this.password = password;
@@ -89,12 +94,14 @@ public class User implements Serializable {
         this.userType = userType;
     }
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     public Citizen getCitizen() {
         return citizen;
     }
     public void setCitizen(Citizen citizen) { this.citizen = citizen; }
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     public Doctor getDoctor() {
         return doctor;

@@ -1,5 +1,7 @@
 package org.regeneration.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -43,6 +45,7 @@ public class Appointment implements Serializable {
         this.appointmentDate = appointmentDate;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "citizen_id")
     public Citizen getCitizen() {
@@ -53,6 +56,7 @@ public class Appointment implements Serializable {
         this.citizen = citizen;
     }
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "doctor_id")
     public Doctor getDoctor() {

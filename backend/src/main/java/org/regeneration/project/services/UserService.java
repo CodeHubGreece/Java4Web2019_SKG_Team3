@@ -5,6 +5,7 @@ import org.regeneration.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,10 @@ public class UserService {
     //GET ALL USERS
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    public User getLoggedInUser(Principal loggedInUser) {
+        return userRepository.findByUsername(loggedInUser.getName());
     }
 
     //POST NEW USER

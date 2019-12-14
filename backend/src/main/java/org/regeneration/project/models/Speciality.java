@@ -1,5 +1,7 @@
 package org.regeneration.project.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class Speciality implements Serializable {
         this.name = name;
     }
 
+    @JsonIgnore
     @OneToMany(mappedBy = "speciality")
     public List<Doctor> getDoctors() {
         return doctors;

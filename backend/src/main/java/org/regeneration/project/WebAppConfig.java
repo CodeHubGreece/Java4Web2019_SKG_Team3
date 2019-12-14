@@ -82,7 +82,7 @@ public class WebAppConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/**").permitAll()
             .and()
             .authorizeRequests()
-            .antMatchers("/authenticate").permitAll()
+            .antMatchers("/login").permitAll()
             .anyRequest().authenticated()
             .and()
             //.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
