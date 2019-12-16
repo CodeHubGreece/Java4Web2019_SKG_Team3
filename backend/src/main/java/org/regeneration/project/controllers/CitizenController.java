@@ -1,5 +1,6 @@
 package org.regeneration.project.controllers;
 
+import org.regeneration.project.dto.CitizenAppointmentDto;
 import org.regeneration.project.models.Citizen;
 import org.regeneration.project.models.User;
 import org.regeneration.project.services.CitizenService;
@@ -26,7 +27,7 @@ public class CitizenController {
 
     //Single Item
     @GetMapping("/{id}")
-    public Optional<Citizen> getOneCitizen(@PathVariable Long id){
+    public List<CitizenAppointmentDto> getOneCitizen(@PathVariable Long id){
         return citizenService.getOneCitizen(id);
     }
 

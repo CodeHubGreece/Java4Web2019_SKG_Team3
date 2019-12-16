@@ -1,7 +1,11 @@
 package org.regeneration.project.services;
 
 
+import org.regeneration.project.dto.CitizenAppointmentDto;
+import org.regeneration.project.dto.DoctorAppointmentDto;
+import org.regeneration.project.dto.DoctorSpecialityDto;
 import org.regeneration.project.models.Doctor;
+import org.regeneration.project.models.Speciality;
 import org.regeneration.project.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,4 +50,17 @@ public class DoctorService {
     public void deleteDoctor(Long id){
         doctorRepository.deleteById(id);
     }
+
+    public List<DoctorAppointmentDto> fetchEmpDeptDataInnerJoin(Long id){
+        return doctorRepository.fetchEmpDeptDataLeftJoin(id);
+    }
+
+    public Long findDoctorIdByUserId(Long id){
+        return doctorRepository.findDoctorIdByUserId(id);
+    }
+
+    public DoctorSpecialityDto fetchDoctorSpecialityInnerJoin(Long id){
+        return doctorRepository.fetchDoctorSpecialityLeftJoin(id);
+    }
+
 }

@@ -1,5 +1,7 @@
 package org.regeneration.project.controllers;
 
+import org.regeneration.project.dto.Dto;
+import org.regeneration.project.dto.UserCitizenDto;
 import org.regeneration.project.models.User;
 import org.regeneration.project.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public User getLoggedInUser(Principal loggedInUser) {
+    public Dto getLoggedInUser(Principal loggedInUser) {
         return userService.getLoggedInUser(loggedInUser);
     }
 

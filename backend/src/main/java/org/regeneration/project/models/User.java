@@ -1,12 +1,8 @@
 package org.regeneration.project.models;
 
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-=======
 import com.fasterxml.jackson.annotation.JsonProperty;
-import net.minidev.json.annotate.JsonIgnore;
->>>>>>> 888c9a876ececbce79107e8ed42387f5fdfe5bd5
 
 import javax.persistence.*;
 import java.io.Serializable;

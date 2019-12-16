@@ -91,7 +91,10 @@ public class LoadData {
             Appointment appointmentC = new Appointment(
                     new Date("2020/02/10"), citizenB, doctorC,
                     "Some description C", "A couple of notes C");
-            appointmentRepository.saveAll(Arrays.asList(appointmentA, appointmentB, appointmentC));
+            Appointment appointmentD = new Appointment(
+                    new Date("2020/05/10"), citizenC, doctorC,
+                    "Some description C", "A couple of notes C");
+            appointmentRepository.saveAll(Arrays.asList(appointmentA, appointmentB, appointmentC, appointmentD));
         };
     }
 }

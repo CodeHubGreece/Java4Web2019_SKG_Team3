@@ -1,13 +1,12 @@
 package org.regeneration.project.services;
 
+import org.regeneration.project.dto.CitizenAppointmentDto;
 import org.regeneration.project.models.Citizen;
-import org.regeneration.project.models.User;
 import org.regeneration.project.repositories.CitizenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CitizenService {
@@ -27,8 +26,10 @@ public class CitizenService {
     }
 
     //GET ONE USER
-    public Optional<Citizen> getOneCitizen(Long id){
-        return citizenRepository.findById(id);
+    public List<CitizenAppointmentDto> getOneCitizen(Long id){
+
+//        return citizenRepository.findById(id);
+            return this.fetchEmpDeptDataInnerJoin(id);
     }
 
     //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
@@ -45,5 +46,13 @@ public class CitizenService {
     //DELETE ONE USER
     public void deleteCitizen(Long id){
         citizenRepository.deleteById(id);
+    }
+
+    public List<CitizenAppointmentDto> fetchEmpDeptDataInnerJoin(Long id){
+        return citizenRepository.fetchEmpDeptDataLeftJoin(id);
+    }
+
+    public Long findCitizenIdByUserId(Long id){
+        return citizenRepository.findCitizenIdByUserId(id);
     }
 }
