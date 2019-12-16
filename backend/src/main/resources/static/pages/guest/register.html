@@ -16,6 +16,7 @@
   <script src="../../scripts/config/main.js"></script>
   <script src="../../scripts/security/guest-auth.js"></script>
   <script src="../../scripts/guest/authentication.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -29,30 +30,35 @@
     <section class="center">
       <form>
         <div class="field">
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" name="firstName" value="" placeholder="Type your first name">
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" name="lastName" value="" placeholder="Type your last name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" value="" placeholder="Type your email">
+        </div>
+        <div class="field">
           <label for="username">Username</label>
           <input id="username" type="text" name="username" value="" placeholder="Type your username">
         </div>
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" type="text" name="password" value="" placeholder="Type your password">
+          <input id="password" type="password" name="password" value="" placeholder="Type your password">
         </div>
         <div class="field">
-
-          <div>Gender</div>
-
-          <input id="male-radio" type="radio" name="gender" value="male" checked>
-          <label for="male-radio">Male</label>
-
-          <input id="female-radio" type="radio" name="gender" value="female">
-          <label for="female-radio">Female</label>
-
-          <input id="other-radio" type="radio" name="gender" value="other">
-          <label for="other-radio">Other</label>
+          <label for="ssn">SSN</label>
+          <input id="ssn" type="text" name="ssn" value="" placeholder="Type your ssn">
         </div>
         <div class="field">
-          <input type="button" value="Register" onclick="register()">
-          <a href="../../index.html">Login</a>
+          <label for="mobileNumber">Mobile Number</label>
+          <input id="mobileNumber" type="text" name="mobileNumber" value="" placeholder="Type your mobile number">
         </div>
+        <input type="button" value="Register" onclick="doRegister(firstName, lastName, email, username, password, ssn, mobileNumber);">
+        <a href="../../index.html">Login</a>
       </form>
     </section>
   </main>

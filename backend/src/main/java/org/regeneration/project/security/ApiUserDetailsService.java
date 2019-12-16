@@ -23,10 +23,10 @@ public class ApiUserDetailsService implements UserDetailsService {
         User user = userRepository.findByUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("username not found");
+            throw new UsernameNotFoundException("Username not found");
         }
 
-        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword());
+        ApiUserDetails userDetails = new ApiUserDetails(user.getUsername(), user.getPassword(), user.getUserType().toString());
         return userDetails;
     }
 

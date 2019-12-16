@@ -25,9 +25,9 @@ public class UserService {
         this.citizenService = citizenService;
     }
     //GET ALL USERS
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
-    }
+//    public List<User> getAllUsers(){
+//        return userRepository.findAll();
+//    }
 
 
     public Dto getLoggedInUser(Principal loggedInUser) {
@@ -39,6 +39,7 @@ public class UserService {
             UserCitizenDto userCitizenDto =  this.fetchUserCitizenInnerJoin(loggedInUser.getName());
             List<CitizenAppointmentDto> appointments = this.citizenService.fetchEmpDeptDataInnerJoin(userCitizenDto.getCitizenId());
             userCitizenDto.setCitizenAppointmentDto(appointments);
+            userCitizenDto.setUserType(UserType.CITIZEN.toString());
             return userCitizenDto;
         }else{
             UserDoctorDto userDoctorDto = this.fetchUserDoctorInnerJoin(loggedInUser.getName());
@@ -46,22 +47,23 @@ public class UserService {
             DoctorSpecialityDto specialityDto = this.doctorService.fetchDoctorSpecialityInnerJoin(userDoctorDto.getDoctorId());
             userDoctorDto.setDoctorSpecialityDto(specialityDto);
             userDoctorDto.setDoctorAppointmentDto(appointments);
+            userDoctorDto.setUserType(UserType.DOCTOR.toString());
             return userDoctorDto;
         }
     }
 
     //POST NEW USER
-    public User postNewUser(User newUser){
-        return userRepository.save(newUser);
-    }
+//    public User postNewUser(User newUser){
+//        return userRepository.save(newUser);
+//    }
 
     //GET ONE USER
-    public Optional<User> getOneUser(Long id){
-        return userRepository.findById(id);
-    }
+//    public Optional<User> getOneUser(Long id){
+//        return userRepository.findById(id);
+//    }
 
     //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
-    public void updateUser(User newUser, Long id){
+//    public void updateUser(User newUser, Long id){
 //        return userRepository.findById(id)
 ////                .map(user -> {
 ////                    user.setFirstName(newUser.setFirstName());
@@ -75,12 +77,12 @@ public class UserService {
 ////                    newUser.setId(id);
 ////                    return  userRepository.save(newUser);
 ////                });
-    }
+//    }
 
     //DELETE ONE USER
-    public void deleteUser(Long id){
-        userRepository.deleteById(id);
-    }
+//    public void deleteUser(Long id){
+//        userRepository.deleteById(id);
+//    }
 
     public UserCitizenDto fetchUserCitizenInnerJoin(String username) {
         return userRepository.fetchUserCitizenLeftJoin(username);

@@ -6,18 +6,18 @@ import java.util.List;
 
 
 public class UserCitizenDto implements Dto{
-
+    private Long citizenId;
     private String userFirstName;
     private String userLastName;
     private String citizenSSN;
-    private Long citizenId;
+    private String userType;
     private List<CitizenAppointmentDto> citizenAppointmentDto;
 
     public UserCitizenDto(String userFirstName, String userLastName, String citizenSSN, Long citizenId){
+        this.citizenId = citizenId;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.citizenSSN = citizenSSN;
-        this.citizenId = citizenId;
     }
 
     public String getUserFirstName() {
@@ -59,5 +59,13 @@ public class UserCitizenDto implements Dto{
 
     public void setCitizenAppointmentDto(List<CitizenAppointmentDto> citizenAppointmentDto) {
         this.citizenAppointmentDto = citizenAppointmentDto;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }

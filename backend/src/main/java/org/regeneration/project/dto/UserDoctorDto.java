@@ -4,10 +4,10 @@ import java.util.List;
 
 
 public class UserDoctorDto implements Dto{
-
+    private Long doctorId;
     private String userFirstName;
     private String userLastName;
-    private Long doctorId;
+    private String userType;
     private DoctorSpecialityDto doctorSpecialityDto;
     private List<DoctorAppointmentDto> doctorAppointmentDto;
 
@@ -55,5 +55,13 @@ public class UserDoctorDto implements Dto{
 
     public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 }
