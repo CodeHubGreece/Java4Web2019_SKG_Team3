@@ -14,7 +14,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
-    @Query("SELECT new org.regeneration.project.dto.UserCitizenDto(u.firstName, u.lastName, c.ssn, u.email, c.mobileNumber, c.id) "
+    @Query("SELECT new org.regeneration.project.dto.UserCitizenDto(u.firstName, u.lastName, u.username, c.ssn, u.email, c.mobileNumber, c.id) "
             + "FROM User u LEFT JOIN u.citizen c WHERE u.username = :username")
     UserCitizenDto fetchUserCitizenLeftJoin(@Param("username") String username);
 

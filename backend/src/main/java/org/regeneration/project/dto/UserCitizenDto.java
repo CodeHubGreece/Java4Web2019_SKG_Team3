@@ -10,15 +10,17 @@ public class UserCitizenDto implements Dto{
     private String userFirstName;
     private String userLastName;
     private String userEmail;
+    private String userUsername;
     private String userMobileNumber;
     private String citizenSSN;
     private String userType;
     private List<CitizenAppointmentDto> citizenAppointmentDto;
 
-    public UserCitizenDto(String userFirstName, String userLastName, String citizenSSN, String userEmail, String userMobileNumber, Long citizenId){
+    public UserCitizenDto(String userFirstName, String userLastName, String userUsername, String citizenSSN, String userEmail, String userMobileNumber, Long citizenId){
         this.citizenId = citizenId;
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
+        this.userUsername = userUsername;
         this.citizenSSN = citizenSSN;
         this.userEmail = userEmail;
         this.userMobileNumber = userMobileNumber;
@@ -38,6 +40,14 @@ public class UserCitizenDto implements Dto{
 
     public void setUserLastName(String userLastName) {
         this.userLastName = userLastName;
+    }
+
+    public String getUserUsername() {
+        return userUsername;
+    }
+
+    public void setUserUsername(String userUsername) {
+        this.userUsername = userUsername;
     }
 
     public String getCitizenSSN() {
