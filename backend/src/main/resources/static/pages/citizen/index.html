@@ -7,7 +7,7 @@
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
 
     <!-- JavaScript files -->
     <script src="../../scripts/config/main.js"></script>
@@ -17,6 +17,157 @@
 
 </head>
 <body>
-    <h1>This is the citizen page. Welcome!</h1>
+    <section class="section columns">
+        <aside class="column is-one-quarter sidebar">
+            <h4 class="is-size-3 has-text-weight-semibold">User Details</h4>
+            <p><strong>First name:</strong> George</p>
+            <p><strong>Last name:</strong> Kostopoulos</p>
+            <p><strong>Username:</strong> georgekst</p>
+            <p><strong>e-mail:</strong> George.Kst@icloud.com</p>
+            <p><strong>Mobile number:</strong> 6975222272</p>
+            <p><strong>SSN:</strong> 12345678901</p>
+            <div class="new-appointment-btn">
+                <button class="button is-primary" onclick="document.querySelector('.modal').classList.add('is-active')">
+                    Create New Appointment
+                </button>
+            </div>
+        </aside>
+        <main class="column main-column">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Speciality</th>
+                        <th>Doctor Name</th>
+                        <th>Description</th>
+                        <th>Notes</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                    <tr>
+                        <td>24/07/2020</td>
+                        <td>13:00</td>
+                        <td>Neurologist</td>
+                        <td>Andi Melo</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Mpla mpla mpla mpla mpla mpla mpla mpla mpla</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <div class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <form class="box">
+                    <h5 class="is-size-4 has-text-weight-semibold">Create New Appointment</h5>
+                    <div class="field">
+                        <label class="label" for="speciality">Choose a speciality</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="speciality" id="speciality" onselect="getDoctorsBySpeciality(speciality);">
+                                    <option value="Neurologist">Neurologist</option>
+                                    <option value="Pediatrist">Pediatrist</option>
+                                    <option value="Psychiatrist">Psychiatrist</option>
+                                    <option value="Cardiologist">Cardiologist</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="doctor">Choose a doctor</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="doctor" id="doctor" onselect="showFields();">
+                                    <option value="1">Doctor A LastName</option>
+                                    <option value="2">Doctor B LastName</option>
+                                    <option value="3">Doctor C LastName</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="datetime">Choose date & time</label>
+                        <div class="control">
+                            <input class="input" type="datetime-local" name="datetime" id="datetime">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="description" class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" name="description" id="description"
+                                      placeholder="Enter a description here"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="notes" class="label">Notes</label>
+                        <div class="control">
+                            <textarea class="textarea" name="notes" id="notes"
+                                      placeholder="Enter special notes here"></textarea>
+                        </div>
+                    </div>
+                    <input type="button" class="button is-primary" value="Create"
+                           onclick="createAppointment(speciality, doctor, datetime);" />
+                </form>
+            </div>
+            <button class="modal-close is-large" aria-label="close"
+                    onclick="document.querySelector('.modal').classList.remove('is-active')">
+            </button>
+        </div>
+    </section>
 </body>
 </html>
