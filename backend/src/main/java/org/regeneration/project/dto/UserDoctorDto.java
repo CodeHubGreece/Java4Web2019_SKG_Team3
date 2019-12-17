@@ -7,6 +7,8 @@ public class UserDoctorDto implements Dto{
     private Long doctorId;
     private String userFirstName;
     private String userLastName;
+    private String userEmail;
+    private String userMobileNumber;
     private String userType;
     private DoctorSpecialityDto doctorSpecialityDto;
     private List<DoctorAppointmentDto> doctorAppointmentDto;
