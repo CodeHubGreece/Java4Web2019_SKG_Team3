@@ -94,7 +94,8 @@ function getDoctorsBySpeciality() {
         contentType: false,
         type: 'GET',
         success: function(data) {
-            document.querySelector(".doctor-selector").setAttribute("style", "visibility: visible;");
+            const doctorSelector = document.querySelector(".doctor-selector");
+            doctorSelector.setAttribute("style", "visibility: visible;");
             const specialitySelector = document.querySelector("#doctor");
             const option = document.createElement("option");
             option.text = "Choose a doctor";
@@ -115,7 +116,7 @@ function getDoctorsBySpeciality() {
 
 function showFields() {
     const fields = document.querySelectorAll(".other-selectors");
-    fields.map(function(field) {
+    fields.forEach(function(field) {
         field.setAttribute("style", "visibility: visible;");
     });
 }
