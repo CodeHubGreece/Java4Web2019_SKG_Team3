@@ -1,12 +1,11 @@
 package org.regeneration.project.services;
 
 
-import org.regeneration.project.dto.CitizenAppointmentDto;
-import org.regeneration.project.dto.DoctorAppointmentDto;
-import org.regeneration.project.dto.DoctorSpecialityDto;
+import org.regeneration.project.dto.*;
 import org.regeneration.project.models.Doctor;
 import org.regeneration.project.models.Speciality;
 import org.regeneration.project.repositories.DoctorRepository;
+import org.regeneration.project.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +16,12 @@ import java.util.Optional;
 public class DoctorService {
 
     private DoctorRepository doctorRepository;
+    private UserRepository userRepository;
 
-    public DoctorService(@Autowired DoctorRepository doctorRepository){this.doctorRepository = doctorRepository;}
+    public DoctorService(@Autowired DoctorRepository doctorRepository, @Autowired UserRepository userRepository){
+        this.doctorRepository = doctorRepository;
+        this.userRepository = userRepository;
+    }
 
     //GET ALL Doctors
     public List<Doctor> getAllDoctors(){
@@ -35,16 +38,10 @@ public class DoctorService {
         return doctorRepository.findById(id);
     }
 
-    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
-//    public Doctor updateDoctor(Doctor newDoctor, Long id){
-//        return doctorRepository.findById(id)
-//                .map(doctor-> {
-//
-//                })
-//                .orElseGet(() -> {
-//
-//                });
-//    }
+    public List<UserDoctorDto> getDoctorsBySpecialityId(Long id){
+        List<UserDoctorDto> userDoctorDto = fetchDoctorbySpecialityJoin(id);
+        return userDoctorDto;
+    }
 
     //DELETE ONE USER
     public void deleteDoctor(Long id){
@@ -61,6 +58,10 @@ public class DoctorService {
 
     public DoctorSpecialityDto fetchDoctorSpecialityInnerJoin(Long id){
         return doctorRepository.fetchDoctorSpecialityLeftJoin(id);
+    }
+
+    public List<UserDoctorDto> fetchDoctorbySpecialityJoin(Long id) {
+        return doctorRepository.fetchDoctorbySpecialityLeftJoin(id);
     }
 
 }

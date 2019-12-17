@@ -1,5 +1,7 @@
 package org.regeneration.project.controllers;
 
+import org.regeneration.project.dto.Dto;
+import org.regeneration.project.dto.UserDoctorDto;
 import org.regeneration.project.models.Doctor;
 import org.regeneration.project.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("/doctors")
 public class DoctorController {
 
     private DoctorService doctorService;
@@ -21,6 +23,11 @@ public class DoctorController {
     @GetMapping("")
     public List<Doctor> getDoctor(){
         return  doctorService.getAllDoctors();
+    }
+
+    @GetMapping("/speciality/{id}")
+    public List<UserDoctorDto> getDoctorsBySpecialityId(@PathVariable Long id){
+        return doctorService.getDoctorsBySpecialityId(id);
     }
 
     //Single Item

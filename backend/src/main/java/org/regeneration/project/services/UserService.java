@@ -91,4 +91,6 @@ public class UserService {
     public UserDoctorDto fetchUserDoctorInnerJoin(String username) {
         return userRepository.fetchUserDoctorLeftJoin(username);
     }
+
+
 }
