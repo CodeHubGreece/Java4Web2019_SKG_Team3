@@ -3,6 +3,9 @@ package org.regeneration.project.dto;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.regeneration.project.models.Doctor;
+
 import java.util.Date;
 
 
@@ -11,11 +14,17 @@ public class CitizenAppointmentDto {
     private Date appointmentDate;
     private String description;
     private String notes;
+    private Doctor doctor;
+    private String doctorFirstName;
+    private String doctorLastName;
 
-    public CitizenAppointmentDto(Date appointmentDate, String description, String notes){
+
+    public CitizenAppointmentDto(Date appointmentDate, String description, String notes, Doctor doctor){
         this.appointmentDate = appointmentDate;
         this.description = description;
         this.notes = notes;
+        this.doctorFirstName = doctor.getUser().getFirstName();
+        this.doctorLastName = doctor.getUser().getLastName();
     }
 
     public Date getAppointmentDate() {
@@ -41,4 +50,30 @@ public class CitizenAppointmentDto {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @JsonIgnore
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public String getDoctorFirstName() {
+        return doctorFirstName;
+    }
+
+    public void setDoctorFirstName(String doctorFirstName) {
+        this.doctorFirstName = doctorFirstName;
+    }
+
+    public String getDoctorLastName() {
+        return doctorLastName;
+    }
+
+    public void setDoctorLastName(String doctorLastName) {
+        this.doctorLastName = doctorLastName;
+    }
+
 }

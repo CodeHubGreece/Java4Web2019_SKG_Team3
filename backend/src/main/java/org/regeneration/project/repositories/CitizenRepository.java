@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface CitizenRepository extends JpaRepository<Citizen, Long> {
 
-    @Query("SELECT new org.regeneration.project.dto.CitizenAppointmentDto(a.appointmentDate, a.description, a.notes) "
+    @Query("SELECT new org.regeneration.project.dto.CitizenAppointmentDto(a.appointmentDate, a.description, a.notes, a.doctor) "
             + "FROM Citizen c LEFT JOIN c.appointments a WHERE c.id = :id")
     List<CitizenAppointmentDto> fetchEmpDeptDataLeftJoin(@Param("id") Long id);
 
