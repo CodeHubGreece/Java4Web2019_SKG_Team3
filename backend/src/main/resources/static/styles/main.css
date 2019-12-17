@@ -16,6 +16,10 @@ section.section {
   padding-top: 2rem;
 }
 
+.doctor-selector, .other-selectors {
+  visibility: hidden !important;
+}
+
 /*h2 {*/
 /*  font-style: italic;*/
 /*  font-size: 18px;*/

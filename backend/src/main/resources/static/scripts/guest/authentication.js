@@ -30,7 +30,7 @@ function getLoggedInUser() {
         contentType: false,
         type: 'GET',
         success: function(data) {
-            localStorage.setItem(LOCAL_STORAGE_USER_TYPE, data.userType);
+            localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(data));
             if (data.userType === "CITIZEN") {
                 window.location.replace(ROOT_PATH + "/pages/citizen/index.html");
             } else {
