@@ -8,6 +8,7 @@ import org.regeneration.project.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,11 @@ public class AppointmentController {
     //Single Item
     @GetMapping("/{id}")
     public Optional<Appointment> getOneAppointment(@PathVariable Long id){ return appointmentService.getOneAppointment(id);}
+
+    @GetMapping("/search")
+    public List<Appointment> searchAppointments(@RequestParam Date startDate, @RequestParam Date endDate){
+        return appointmentService.searchAppointment(startDate, endDate);
+    }
 
     @PostMapping("")
     public Appointment getNewAppointment(@RequestBody NewAppointmentDto newAppointment){

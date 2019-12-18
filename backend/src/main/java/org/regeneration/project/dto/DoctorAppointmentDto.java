@@ -7,6 +7,7 @@ import java.util.Date;
 
 
 public class DoctorAppointmentDto {
+
     private Date appointmentDate;
     private String description;
     private String notes;
@@ -14,15 +15,16 @@ public class DoctorAppointmentDto {
     private String citizenFirstName;
     private String citizenLastName;
     private Long citizenId;
+    private Long appointmentId;
 
-    public DoctorAppointmentDto(Date appointmentDate, String description, String notes, Citizen citizen){
+    public DoctorAppointmentDto(Date appointmentDate, String description, String notes, Citizen citizen, Long appointmentId){
         this.appointmentDate = appointmentDate;
         this.description = description;
         this.notes = notes;
         this.citizenFirstName = citizen.getUser().getFirstName();
         this.citizenLastName = citizen.getUser().getLastName();
         this.citizenId = citizen.getId();
-
+        this.appointmentId = appointmentId;
     }
 
     public Date getAppointmentDate() {
@@ -79,6 +81,14 @@ public class DoctorAppointmentDto {
 
     public void setCitizenId(Long citizenId) {
         this.citizenId = citizenId;
+    }
+
+    public Long getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
 }

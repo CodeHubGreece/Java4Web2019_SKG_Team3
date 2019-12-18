@@ -8,6 +8,7 @@ import org.regeneration.project.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,5 +46,9 @@ public class AppointmentService {
     //DELETE ONE USER
     public void deleteAppointment(Long id){
         appointmentRepository.deleteById(id);
+    }
+
+    public List<Appointment> searchAppointment(Date startDate, Date endDate) {
+        return appointmentRepository.findByAppointmentDateBetween(startDate, endDate);
     }
 }
