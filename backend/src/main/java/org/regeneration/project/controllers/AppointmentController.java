@@ -49,6 +49,12 @@ public class AppointmentController {
     }
 
 
+    @PutMapping("/{id}")
+    public Optional<Appointment> updateAppointment(@RequestBody Appointment newAppointment, @RequestParam Long id){
+        return appointmentService.updateAppointment(newAppointment, id);
+    }
+
+
     @DeleteMapping("/{id}")
     public void deleteAppointment(@PathVariable Long id){
         appointmentService.deleteAppointment(id);

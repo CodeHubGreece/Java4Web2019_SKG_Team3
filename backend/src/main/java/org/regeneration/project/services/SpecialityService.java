@@ -28,16 +28,7 @@ public class SpecialityService {
         return specialityRepository.findById(id);
     }
 
-    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
-//    public Doctor updateDoctor(Doctor newDoctor, Long id){
-//        return doctorRepository.findById(id)
-//                .map(doctor-> {
-//
-//                })
-//                .orElseGet(() -> {
-//
-//                });
-//    }
+
 
     //DELETE ONE USER
     public void deleteSpeciality(Long id){
