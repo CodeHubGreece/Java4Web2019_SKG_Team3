@@ -64,5 +64,37 @@
         </table>
     </main>
 </section>
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <div class="columns">
+                    <div class="column">
+                        <h4 class="is-size-3 has-text-weight-semibold">User Details</h4>
+                        <div class="column" id="user-details">
+                            <p><strong>First name:</strong></p>
+                            <p><strong>Last name:</strong></p>
+                            <p><strong>Username:</strong></p>
+                            <p><strong>e-mail:</strong></p>
+                            <p><strong>Mobile number:</strong></p>
+                            <p><strong>SSN:</strong></p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="is-size-3 has-text-weight-semibold">Appointment Details</h4>
+                        <div class="column" id="appointment-details">
+                            <p><strong>Date:</strong></p>
+                            <p><strong>Time:</strong></p>
+                            <p><strong>Description:</strong></p>
+                            <p><strong>Notes:</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"
+                onclick="document.querySelector('.modal').classList.remove('is-active')">
+        </button>
+    </div>
 </body>
 </html>
