@@ -120,3 +120,31 @@ function showFields() {
         field.setAttribute("style", "visibility: visible;");
     });
 }
+
+function createAppointment(doctorElement, datetimeElement, descriptionElement, notesElement) {
+    let doctorId = doctorElement && doctorElement.value ? parseInt(doctorElement.value) : "";
+    let datetime = datetimeElement && datetimeElement.value ? datetimeElement.value : "";
+    let description = descriptionElement && descriptionElement.value ? descriptionElement.value : "";
+    let notes = notesElement && notesElement.value ? notesElement.value : "";
+    const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
+
+    const data = { doctorId, "citizenId": currentUser.citizenId, appointmentDate: new Date(datetime).getTime(), description, notes };
+
+    $.ajax({
+        url: ROOT_PATH + "/appointment",
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json",
+        type: 'POST',
+        success: function(data) {
+            document.querySelector('.modal').classList.remove('is-active');
+            getLoggedInUser();
+        },
+        error: function(error) {
+            console.error("We had an error!");
+            document.querySelector('.modal').classList.remove('is-active');
+            getLoggedInUser();
+        }
+    });
+
+}
