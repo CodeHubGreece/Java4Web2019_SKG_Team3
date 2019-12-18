@@ -1,5 +1,7 @@
 package org.regeneration.project.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -49,6 +51,7 @@ public class UserDoctorDto implements Dto{
         this.doctorAppointmentDto = doctorAppointmentDto;
     }
 
+    @JsonIgnore
     public Long getDoctorId() {
         return doctorId;
     }
