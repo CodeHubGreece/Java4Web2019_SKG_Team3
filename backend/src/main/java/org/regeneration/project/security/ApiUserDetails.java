@@ -1,6 +1,7 @@
 package org.regeneration.project.security;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -10,15 +11,17 @@ public class ApiUserDetails implements UserDetails {
 
     private final String username;
     private final String password;
+    private final String userType;
 
-    public ApiUserDetails(String username, String password) {
+    public ApiUserDetails(String username, String password, String userType) {
         this.username = username;
         this.password = password;
+        this.userType = userType;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return Collections.singletonList(new SimpleGrantedAuthority("userType" + userType));
     }
 
     @Override

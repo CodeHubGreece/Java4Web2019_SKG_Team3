@@ -11,7 +11,7 @@
   width: 75px;
 }
 
-input[type="text"], input[type="password"]  {
+input[type="text"], input[type="email"], input[type="password"]  {
   background-color: white;
   padding: 12px;
   width: 206px;

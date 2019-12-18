@@ -80,7 +80,16 @@ public class LoadData {
                     passwordEncoder.encode("doctor"),
                     UserType.DOCTOR);
             Doctor doctorC = new Doctor(neurologist, userDoctorC);
-            doctorRepository.saveAll(Arrays.asList(doctorA, doctorB, doctorC));
+
+            User userDoctorD = new User(
+                    "DoctorD",
+                    "LastName",
+                    "doctorD@gmail.com",
+                    "doctorD",
+                    passwordEncoder.encode("doctor"),
+                    UserType.DOCTOR);
+            Doctor doctorD = new Doctor(neurologist, userDoctorD);
+            doctorRepository.saveAll(Arrays.asList(doctorA, doctorB, doctorC, doctorD));
 
             Appointment appointmentA = new Appointment(
                     new Date("2019/11/23"), citizenA, doctorB,
