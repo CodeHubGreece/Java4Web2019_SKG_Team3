@@ -82,4 +82,16 @@ public class Appointment implements Serializable {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", appointmentDate=" + appointmentDate +
+                ", citizen=" + citizen +
+                ", doctor=" + doctor +
+                ", description='" + description + '\'' +
+                ", notes='" + notes + '\'' +
+                '}';
+    }
 }

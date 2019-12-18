@@ -16,7 +16,7 @@ import java.util.List;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-    @Query("SELECT new org.regeneration.project.dto.DoctorAppointmentDto(a.appointmentDate, a.description, a.notes) "
+    @Query("SELECT new org.regeneration.project.dto.DoctorAppointmentDto(a.appointmentDate, a.description, a.notes, a.citizen) "
             + "FROM Doctor d LEFT JOIN d.appointments a WHERE d.id = :id")
     List<DoctorAppointmentDto> fetchEmpDeptDataLeftJoin(@Param("id") Long id);
 
@@ -31,4 +31,5 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     List<UserDoctorDto> fetchDoctorbySpecialityLeftJoin(@Param("speciality_id") Long speciality_id);
 
 
+    Doctor findDoctorIdById(Long doctorId);
 }
