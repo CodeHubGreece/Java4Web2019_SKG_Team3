@@ -35,12 +35,12 @@ $('document').ready(function(){
                 success: function(data) {
                     document.querySelector('.modal').classList.add('is-active');
                     const userDetailsParagraphs = document.querySelectorAll("#user-details > p");
-                    userDetailsParagraphs[0].innerHTML = userDetailsParagraphs[0].innerHTML + " " + data.userFirstName;
-                    userDetailsParagraphs[1].innerHTML = userDetailsParagraphs[1].innerHTML + " " + data.userLastName;
-                    userDetailsParagraphs[2].innerHTML = userDetailsParagraphs[2].innerHTML + " " + data.userUsername;
-                    userDetailsParagraphs[3].innerHTML = userDetailsParagraphs[3].innerHTML + " " + data.userEmail;
-                    userDetailsParagraphs[4].innerHTML = userDetailsParagraphs[4].innerHTML + " " + data.userMobileNumber;
-                    userDetailsParagraphs[5].innerHTML = userDetailsParagraphs[5].innerHTML + " " + data.citizenSSN;
+                    userDetailsParagraphs[0].innerHTML = "<strong>First name: </strong>" + data.userFirstName;
+                    userDetailsParagraphs[1].innerHTML = "<strong>Last name: </strong>" + data.userLastName;
+                    userDetailsParagraphs[2].innerHTML = "<strong>Usermame: </strong>" + data.userUsername;
+                    userDetailsParagraphs[3].innerHTML = "<strong>Email: </strong>" + data.userEmail;
+                    userDetailsParagraphs[4].innerHTML = "<strong>Mobile Number: </strong>" + data.userMobileNumber;
+                    userDetailsParagraphs[5].innerHTML = "<strong>SSN: </strong>" + data.citizenSSN;
 
                     const datetime = new Date(appointment.appointmentDate);
                     const dateString = datetime.toLocaleDateString(undefined, {
@@ -56,10 +56,10 @@ $('document').ready(function(){
                     });
 
                     const appointmentDetailsParagraphs = document.querySelectorAll("#appointment-details > p");
-                    appointmentDetailsParagraphs[0].innerHTML = appointmentDetailsParagraphs[0].innerHTML + " " + dateString;
-                    appointmentDetailsParagraphs[1].innerHTML = appointmentDetailsParagraphs[1].innerHTML + " " + timeString;
-                    appointmentDetailsParagraphs[2].innerHTML = appointmentDetailsParagraphs[2].innerHTML + " " + appointment.description;
-                    appointmentDetailsParagraphs[3].innerHTML = appointmentDetailsParagraphs[3].innerHTML + " " + appointment.notes;
+                    appointmentDetailsParagraphs[0].innerHTML = "<strong>Date: </strong>" + dateString;
+                    appointmentDetailsParagraphs[1].innerHTML = "<strong>Time: </strong>" + timeString;
+                    appointmentDetailsParagraphs[2].innerHTML = "<strong>Description: </strong>" + appointment.description;
+                    appointmentDetailsParagraphs[3].innerHTML = "<strong>Notes: </strong>" + appointment.notes;
                 }
             })
         });

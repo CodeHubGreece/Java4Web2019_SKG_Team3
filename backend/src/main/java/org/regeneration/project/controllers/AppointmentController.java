@@ -26,10 +26,6 @@ public class AppointmentController {
         this.doctorRepository = doctorRepository;
     }
 
-    @GetMapping("")
-    public List<Appointment> getAppointment(){
-        return  appointmentService.getAllAppointments();
-    }
 
     //Single Item
     @GetMapping("/{id}")

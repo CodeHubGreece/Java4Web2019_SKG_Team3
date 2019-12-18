@@ -98,12 +98,12 @@ function getDoctorsBySpeciality() {
             doctorSelector.setAttribute("style", "visibility: visible;");
             const specialitySelector = document.querySelector("#doctor");
             const option = document.createElement("option");
-            option.text = "Choose a doctor";
+            option.innerHTML = "Choose a doctor";
             option.value = "";
             specialitySelector.appendChild(option);
             data.map(function(doctor) {
                 const option = document.createElement("option");
-                option.text = doctor.userFirstName + " " + doctor.userLastName;
+                option.innerHTML = doctor.userFirstName + " " + doctor.userLastName;
                 option.value = doctor.doctorId;
                 specialitySelector.appendChild(option);
             });
