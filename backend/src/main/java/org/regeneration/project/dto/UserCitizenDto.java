@@ -58,7 +58,7 @@ public class UserCitizenDto implements Dto{
         this.citizenSSN = citizenSSN;
     }
 
-    @JsonIgnore
+
     public Long getCitizenId() {
         return citizenId;
     }
