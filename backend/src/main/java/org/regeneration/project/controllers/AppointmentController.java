@@ -6,6 +6,7 @@ import org.regeneration.project.repositories.CitizenRepository;
 import org.regeneration.project.repositories.DoctorRepository;
 import org.regeneration.project.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -33,7 +34,7 @@ public class AppointmentController {
     public Optional<Appointment> getOneAppointment(@PathVariable Long id){ return appointmentService.getOneAppointment(id);}
 
     @GetMapping("/search")
-    public List<Appointment> searchAppointments(@RequestParam Date startDate, @RequestParam Date endDate){
+    public List<Appointment> searchAppointments(@RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date startDate, @RequestParam @DateTimeFormat(pattern="MM/dd/yyyy") Date endDate){
         return appointmentService.searchAppointment(startDate, endDate);
     }
 
