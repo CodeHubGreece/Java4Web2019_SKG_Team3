@@ -23,4 +23,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     UserDoctorDto fetchUserDoctorLeftJoin(@Param("username") String username);
 
 
+    User findByCitizenId(Long id);
 }

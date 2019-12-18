@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Citizen Page</title>
+    <title>Doctor Page</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -46,11 +46,6 @@
             <p><strong>Username:</strong></p>
             <p><strong>Speciality:</strong></p>
         </div>
-        <div class="new-appointment-btn">
-            <button class="button is-primary" onclick="document.querySelector('.modal').classList.add('is-active')">
-                Create New Appointment
-            </button>
-        </div>
     </aside>
     <main class="column main-column">
         <table class="table">
@@ -61,8 +56,6 @@
                 <th>Citizen Name</th>
                 <th>Description</th>
                 <th>Notes</th>
-                <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody id="table-body">
@@ -70,57 +63,6 @@
             </tbody>
         </table>
     </main>
-    <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-            <form class="box">
-                <h5 class="is-size-4 has-text-weight-semibold">Create New Appointment</h5>
-                <div class="field">
-                    <label class="label" for="speciality">Choose a speciality</label>
-                    <div class="control">
-                        <div class="select">
-                            <select name="speciality" id="speciality" onchange="getDoctorsBySpeciality();">
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="field doctor-selector">
-                    <label class="label" for="doctor">Choose a doctor</label>
-                    <div class="control">
-                        <div class="select">
-                            <select name="doctor" id="doctor" onchange="showFields();">
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="field other-selectors">
-                    <label class="label" for="datetime">Choose date & time</label>
-                    <div class="control">
-                        <input class="input" type="datetime-local" name="datetime" id="datetime">
-                    </div>
-                </div>
-                <div class="field other-selectors">
-                    <label for="description" class="label">Description</label>
-                    <div class="control">
-                            <textarea class="textarea" name="description" id="description"
-                                      placeholder="Enter a description here"></textarea>
-                    </div>
-                </div>
-                <div class="field other-selectors">
-                    <label for="notes" class="label">Notes</label>
-                    <div class="control">
-                            <textarea class="textarea" name="notes" id="notes"
-                                      placeholder="Enter special notes here"></textarea>
-                    </div>
-                </div>
-                <input type="button" class="button is-primary" value="Create"
-                       onclick="createAppointment(speciality, doctor, datetime, description, notes);" />
-            </form>
-        </div>
-        <button class="modal-close is-large" aria-label="close"
-                onclick="document.querySelector('.modal').classList.remove('is-active')">
-        </button>
-    </div>
 </section>
 </body>
 </html>

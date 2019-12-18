@@ -1,6 +1,6 @@
 package org.regeneration.project.dto;
 
-import org.regeneration.project.models.Appointment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.regeneration.project.models.Citizen;
 import org.regeneration.project.models.Doctor;
 
@@ -13,15 +13,6 @@ public class NewAppointmentDto {
     private String notes;
     private Long citizenId;
     private Long doctorId;
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
     private Citizen citizen;
     private Doctor doctor;
 
@@ -61,6 +52,7 @@ public class NewAppointmentDto {
         return citizenId;
     }
 
+
     public void setCitizendId(Long citizendId) {
         this.citizenId = citizendId;
     }
@@ -73,23 +65,21 @@ public class NewAppointmentDto {
         this.doctorId = doctorId;
     }
 
-    @Override
-    public String toString() {
-        return "NewAppointmentDto{" +
-                "appointment=" + appointmentDate +
-                ", description='" + description + '\'' +
-                ", notes='" + notes + '\'' +
-                ", citizendId=" + citizenId +
-                ", doctorId=" + doctorId +
-                '}';
-    }
-
+    @JsonIgnore
     public Citizen getCitizen() {
         return citizen;
     }
 
     public void setCitizen(Citizen citizen) {
         this.citizen = citizen;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
 }

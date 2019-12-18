@@ -48,13 +48,6 @@ $('document').ready(function(){
         row.innerHTML = appointment.notes;
         tableRow.appendChild(row);
 
-        row = document.createElement("td");
-        row.innerHTML = "Edit";
-        tableRow.appendChild(row);
-
-        row = document.createElement("td");
-        row.innerHTML = "Delete";
-        tableRow.appendChild(row);
 
         tableBody.appendChild(tableRow);
     });
