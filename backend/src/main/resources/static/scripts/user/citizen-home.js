@@ -1,17 +1,17 @@
 $('document').ready(function(){
     const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
     const userDetailsParagraphs = document.querySelectorAll("#userDetails > p");
-    userDetailsParagraphs[0].innerHTML = userDetailsParagraphs[0].innerHTML + " " + currentUser.userFirstName;
-    userDetailsParagraphs[1].innerHTML = userDetailsParagraphs[1].innerHTML + " " + currentUser.userLastName;
-    userDetailsParagraphs[2].innerHTML = userDetailsParagraphs[2].innerHTML + " " + currentUser.userUsername;
-    userDetailsParagraphs[3].innerHTML = userDetailsParagraphs[3].innerHTML + " " + currentUser.userEmail;
-    userDetailsParagraphs[4].innerHTML = userDetailsParagraphs[4].innerHTML + " " + currentUser.userMobileNumber;
-    userDetailsParagraphs[5].innerHTML = userDetailsParagraphs[5].innerHTML + " " + currentUser.citizenSSN;
+    userDetailsParagraphs[0].innerHTML = currentUser.userFirstName ? userDetailsParagraphs[0].innerHTML + " " + currentUser.userFirstName : userDetailsParagraphs[0].innerHTML + " " + currentUser.firstName;
+    userDetailsParagraphs[1].innerHTML = currentUser.userLastName ? userDetailsParagraphs[1].innerHTML + " " + currentUser.userLastName : userDetailsParagraphs[1].innerHTML + " " + currentUser.lastName;
+    userDetailsParagraphs[2].innerHTML = currentUser.userUsername ? userDetailsParagraphs[2].innerHTML + " " + currentUser.userUsername :userDetailsParagraphs[2].innerHTML + " " + currentUser.username;
+    userDetailsParagraphs[3].innerHTML = currentUser.userEmail ? userDetailsParagraphs[3].innerHTML + " " + currentUser.userEmail : userDetailsParagraphs[3].innerHTML + " " + currentUser.email;
+    userDetailsParagraphs[4].innerHTML = currentUser.userMobileNumber ? userDetailsParagraphs[4].innerHTML + " " + currentUser.userMobileNumber : userDetailsParagraphs[4].innerHTML + " " + currentUser.mobileNumber;
+    userDetailsParagraphs[5].innerHTML = currentUser.citizenSSN ? userDetailsParagraphs[5].innerHTML + " " + currentUser.citizenSSN : userDetailsParagraphs[5].innerHTML + " " + currentUser.ssn;
 
     const tableBody = document.querySelector("#table-body");
     const appointments = currentUser.citizenAppointmentDto;
 
-    appointments.map(function(appointment) {
+    appointments && appointments.map(function(appointment) {
 
         const datetime = new Date(appointment.appointmentDate);
         const dateString = datetime.toLocaleDateString(undefined, {
