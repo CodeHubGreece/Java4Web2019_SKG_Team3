@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             + "FROM User u LEFT JOIN u.citizen c WHERE u.username = :username")
     UserCitizenDto fetchUserCitizenLeftJoin(@Param("username") String username);
 
-    @Query("SELECT new org.regeneration.project.dto.UserDoctorDto(u.firstName, u.lastName, d.id) "
+    @Query("SELECT new org.regeneration.project.dto.UserDoctorDto(u.firstName, u.lastName, u.username, d.id) "
             + "FROM User u LEFT JOIN u.doctor d WHERE u.username = :username")
     UserDoctorDto fetchUserDoctorLeftJoin(@Param("username") String username);
 
