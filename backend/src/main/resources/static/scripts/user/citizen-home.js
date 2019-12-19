@@ -186,12 +186,10 @@ function editAppointment(index, datetimeElement, descriptionElement, notesElemen
         contentType: "application/json",
         data: JSON.stringify(data),
         type: 'PUT',
-        success: function(data) {
-            console.log(data);
+        success: function() {
             getLoggedInUser();
         },
-        error: function(error) {
-            console.error(error);
+        error: function() {
             console.error("We had an error!");
         }
     });
@@ -205,12 +203,10 @@ function deleteAppointment(index) {
         processData: false,
         contentType: false,
         type: 'DELETE',
-        success: function(data) {
-            console.log(data);
+        success: function() {
             getLoggedInUser();
         },
-        error: function(error) {
-            console.error(error);
+        error: function() {
             console.error("We had an error!");
         }
     });
