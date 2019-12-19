@@ -34,3 +34,12 @@ section.section.search {
 table.table.resultsTable {
   padding-top: 1rem !important;
 }
+
+.navbar img {
+  max-height: 4rem !important;
+}
+
+.navbar-burger {
+  width: 5rem !important;
+  height: 5rem !important;
+}
