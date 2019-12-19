@@ -1,7 +1,18 @@
+<<<<<<< Updated upstream
 html, body {
   background-color: #e7e7e7;
 }
+=======
+/** {*/
+/*  font-family: 'Roboto', sans-serif;*/
+/*  font-size: 14px;*/
+/*}*/
+.error-label{
+color:red;
+display:none;
+>>>>>>> Stashed changes
 
+}
 .center {
   margin: 0px auto;
   max-width: 480px;

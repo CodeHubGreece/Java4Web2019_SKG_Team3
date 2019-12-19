@@ -47,51 +47,73 @@
   </nav>
   <main>
     <section class="section is-medium center">
-      <form class="box">
+      <form id="formregister">
         <h5 class="is-size-4 has-text-weight-semibold">Register for an account</h5>
+
         <div class="field">
           <label class="label" for="firstName">First Name</label>
           <div class="control">
-            <input class="input" type="text" id="firstName" name="firstName" value="" placeholder="Type your first name" required />
+            <input class="input" type="text" id="firstName" name="firstName" value="" placeholder="Type your first name"
+                   pattern="[A-Za-z]{3,}$" minLength="3" maxlength="45" required />
           </div>
+          <div class="error-label">Your first name must have at least 3 characters.</div>
         </div>
+
         <div class="field">
           <label class="label" for="lastName">Last Name</label>
           <div class="control">
-            <input class="input" type="text" id="lastName" name="lastName" value="" placeholder="Type your last name" required />
+            <input class="input" type="text" id="lastName" name="lastName" value="" placeholder="Type your last name"
+                   pattern="[A-Za-z]{3,}$" minLength="3" maxlength="45"  required />
           </div>
+          <div class="error-label">Your last name must have at least 3 characters.</div>
         </div>
+
         <div class="field">
-          <label class="label" for="password">Email</label>
+          <label class="label" for="email">Email</label>
           <div class="control">
-            <input class="input" type="email" id="email" name="email" value="" placeholder="Type your email" required />
+            <input class="input" type="email" id="email" name="email" value="" placeholder="Type your email"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="45" required />
+            <div class="error-label">Please enter a valid e-mail</div>
           </div>
+
         </div>
+
         <div class="field">
           <label class="label" for="username">Username</label>
           <div class="control">
-            <input class="input" type="text" id="username" name="username" value="" placeholder="Type your username" required />
+            <input class="input" type="text" id="username" name="username" value="" placeholder="Type your username"
+                   pattern="[a-z0-9]{5,}$" maxlength="45" required />
           </div>
+          <div class="error-label">Your username must have at least 5 characters</div>
         </div>
         <div class="field">
           <label class="label" for="password">Password</label>
           <div class="control">
-            <input class="input" type="password" id="password" name="password" value="" placeholder="Type your password" required />
+            <input class="input" type="password" id="password" name="password" value="" placeholder="Type your password"
+                   pattern="[a-z0-9]{8,}$" maxlength="45" required />
           </div>
+          <div class="error-label">Your password must have at least 8 characters</div>
         </div>
         <div class="field">
-          <label class="label" for="password">SSN</label>
+          <label class="label" for="ssn">SSN</label>
           <div class="control">
-            <input class="input" type="text" id="ssn" name="ssn" value="" placeholder="Type your ssn" required />
+            <input class="input" type="text" id="ssn" name="ssn" value="" placeholder="Type your ssn"
+                   pattern="[0-9]{10,}$" minlength="11" maxlength="11" required />
           </div>
+          <div class="error-label">Your ssn must have 11 characters</div>
         </div>
         <div class="field">
-          <label class="label" for="password">Mobile Number</label>
+          <label class="label" for="mobileNumber">Mobile Number</label>
           <div class="control">
-            <input class="input" type="text" id="mobileNumber" name="mobileNumber" value="" placeholder="Type your mobile number" required />
+            <input class="input" type="text" id="mobileNumber" name="mobileNumber" value="" placeholder="Type your mobile number"
+                   pattern="[0-9]{10,}$" maxlength="45" required />
           </div>
+          <div class="error-label">Your mobile number is not correct</div>
         </div>
-        <input type="button" class="button is-primary" value="Register" onclick="doRegister(firstName, lastName, email, username, password, ssn, mobileNumber);" />
+       <input type="button" class="button is-primary" value="Register"
+               onclick="doRegister(firstName, lastName, email, username, password, ssn, mobileNumber);"
+       />
+
         <br />
         <p>Already have an account? <a href="../../index.html">Login here!</a></p>
       </form>

@@ -49,6 +49,9 @@ async function doLogin(username, password) {
 }
 
 function doRegister(firstNameElement, lastNameElement, emailElement, usernameElement, passwordElement, ssnElement, mobileNumberElement) {
+const isValid= document.getElementById("formregister").checkValidity();
+   if (isValid == true ) {
+
     let firstName = firstNameElement && firstNameElement.value ? firstNameElement.value : "";
     let lastName = lastNameElement && lastNameElement.value ? lastNameElement.value : "";
     let email = emailElement && emailElement.value ? emailElement.value : "";
@@ -73,5 +76,27 @@ function doRegister(firstNameElement, lastNameElement, emailElement, usernameEle
         error: function(error) {
             console.error(error);
         }
+
     });
-}
+    }
+  else {
+        let inputs = document.querySelectorAll("form input");
+    for (let input of inputs) {
+     const errorLabel = $(input).closest(".field").find(".error-label");
+        if (input.checkValidity()){
+            $(errorLabel).hide();
+        } else {
+         $(errorLabel).show();
+         }
+        }
+    }
+ }
+ /*else {
+         let inputs = document.querySelectorAll("form input");
+     for (let input of inputs) {
+ const isCurrentTargetValid = $(input).is(":valid");
+              if (!isCurrentTargetValid) {
+                  $(errorLabel).show();
+              } else {
+                  $(errorLabel).hide();
+              }
