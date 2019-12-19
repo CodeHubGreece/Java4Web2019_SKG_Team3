@@ -38,16 +38,16 @@ public class AppointmentController {
     public Optional<Appointment> getOneAppointment(@PathVariable Long id){ return appointmentService.getOneAppointment(id);}
 
     @GetMapping("/citizen/search")
-    public List<CitizenAppointmentDto> searchCitizenAppointments(Principal loggedInUser, @RequestParam @DateTimeFormat(pattern="dd-MM-yyyyThh:mm") Date startDate,
-                                                          @RequestParam @DateTimeFormat(pattern="dd-MM-yyyyThh:mm") Date endDate,
+    public List<CitizenAppointmentDto> searchCitizenAppointments(Principal loggedInUser, @RequestParam @DateTimeFormat(pattern="dd/MM/yyyy hh:mm") Date startDate,
+                                                          @RequestParam @DateTimeFormat(pattern="dd/MM/yyyy hh:mm") Date endDate,
                                                           @RequestParam Long specialityId)
     {
         return appointmentService.searchCitizenAppointment(loggedInUser, startDate, endDate, specialityId);
     }
 
     @GetMapping("/doctor/search")
-    public List<DoctorAppointmentDto> searchDoctorAppointments(Principal loggedInUser, @RequestParam @DateTimeFormat(pattern="dd-MM-yyyyThh:mm") Date startDate,
-                                                               @RequestParam @DateTimeFormat(pattern="dd-MM-yyyyThh:mm") Date endDate,
+    public List<DoctorAppointmentDto> searchDoctorAppointments(Principal loggedInUser, @RequestParam @DateTimeFormat(pattern="dd/MM/yyyy hh:mm") Date startDate,
+                                                               @RequestParam @DateTimeFormat(pattern="dd/MM/yyyy hh:mm") Date endDate,
                                                                @RequestParam String keyword)
     {
         return appointmentService.searchDoctorAppointment(loggedInUser, startDate, endDate, keyword);

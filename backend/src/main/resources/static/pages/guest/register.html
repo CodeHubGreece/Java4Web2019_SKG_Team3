@@ -47,7 +47,7 @@
   </nav>
   <main>
     <section class="section is-medium center">
-      <form id="formregister">
+      <form id="formregister" class="box">
         <h5 class="is-size-4 has-text-weight-semibold">Register for an account</h5>
 
         <div class="field">
@@ -75,9 +75,7 @@
                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="45" required />
             <div class="error-label">Please enter a valid e-mail</div>
           </div>
-
         </div>
-
         <div class="field">
           <label class="label" for="username">Username</label>
           <div class="control">
@@ -111,14 +109,13 @@
           <div class="error-label">Your mobile number is not correct</div>
         </div>
        <input type="button" class="button is-primary" value="Register"
-               onclick="doRegister(firstName, lastName, email, username, password, ssn, mobileNumber);"
-       />
-
+               onclick="doRegister(firstName, lastName, email, username, password, ssn, mobileNumber);"/>
         <br />
         <p>Already have an account? <a href="../../index.html">Login here!</a></p>
       </form>
     </section>
   </main>
+  <script src="../../scripts/user/navbar-toggle.js"></script>
 
 </body>
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Search Page</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+
+    <!-- JavaScript files -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <script src="../../scripts/config/main.js"></script>
+    <script src="../../scripts/security/user-auth.js"></script>
+    <script src="../../scripts/user/home.js"></script>
+    <script src="../../scripts/guest/authentication.js"></script>
+    <script src="../../scripts/user/citizen-search.js"></script>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbar" class="navbar-menu">
+            <div class="navbar-end">
+                <a href="search.html" class="navbar-item">Search Appointments</a>
+                <a href="#" class="navbar-item" onclick="logout();">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section columns is-medium is-centered search">
+        <main class="column">
+            <form class="box">
+                <h5 class="is-size-4 has-text-weight-semibold">Search Your Appointments</h5>
+                <div class="field">
+                    <label class="label" for="speciality">Choose a speciality</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="speciality" id="speciality">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="fromDateTime">Choose a starting date & time</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" name="fromDateTime" id="fromDateTime">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="toDateTime">Choose and ending date & time</label>
+                    <div class="control">
+                        <input class="input" type="datetime-local" name="toDateTime" id="toDateTime">
+                    </div>
+                </div>
+                <input type="button" class="button is-primary" value="Search"
+                       onclick="searchAppointment(speciality, fromDateTime, toDateTime);" />
+            </form>
+
+        </main>
+    </section>
+    <section class="columns is-medium is-centered resultsTable">
+        <table class="table is-hidden">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Speciality</th>
+                <th>Doctor Name</th>
+                <th>Description</th>
+                <th>Notes</th>
+            </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </section>
+    <script src="../../scripts/user/navbar-toggle.js"></script>
+</body>
+</html>

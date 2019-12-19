@@ -91,12 +91,3 @@ const isValid= document.getElementById("formregister").checkValidity();
         }
     }
  }
- /*else {
-         let inputs = document.querySelectorAll("form input");
-     for (let input of inputs) {
- const isCurrentTargetValid = $(input).is(":valid");
-              if (!isCurrentTargetValid) {
-                  $(errorLabel).show();
-              } else {
-                  $(errorLabel).hide();
-              }
