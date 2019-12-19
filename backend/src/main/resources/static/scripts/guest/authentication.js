@@ -30,7 +30,7 @@ function getLoggedInUser() {
         contentType: false,
         type: 'GET',
         success: function(data) {
-            localStorage.setItem(LOCAL_STORAGE_USER_TYPE, data.userType);
+            localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(data));
             if (data.userType === "CITIZEN") {
                 window.location.replace(ROOT_PATH + "/pages/citizen/index.html");
             } else {
@@ -66,8 +66,8 @@ function doRegister(firstNameElement, lastNameElement, emailElement, usernameEle
         dataType: "json",
         contentType: "application/json",
         type: 'POST',
-        success: function() {
-            localStorage.setItem(LOCAL_STORAGE_USER_TYPE, "CITIZEN");
+        success: function(data) {
+            localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(data));
             window.location.replace(ROOT_PATH + "/pages/citizen/index.html");
         },
         error: function(error) {

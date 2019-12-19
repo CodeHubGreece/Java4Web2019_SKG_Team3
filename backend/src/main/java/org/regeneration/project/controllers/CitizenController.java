@@ -1,6 +1,7 @@
 package org.regeneration.project.controllers;
 
 import org.regeneration.project.dto.CitizenAppointmentDto;
+import org.regeneration.project.dto.Dto;
 import org.regeneration.project.models.Citizen;
 import org.regeneration.project.models.User;
 import org.regeneration.project.services.CitizenService;
@@ -21,14 +22,13 @@ public class CitizenController {
     }
 
     @GetMapping("")
-    public List<Citizen> getCitizen(){
-        return  citizenService.getAllCitizens();
-    }
-
-    //Single Item
-    @GetMapping("/{id}")
     public List<CitizenAppointmentDto> getOneCitizen(@PathVariable Long id){
         return citizenService.getOneCitizen(id);
+    }
+
+    @GetMapping("/{id}")
+    public Dto getCitizenById(@PathVariable Long id){
+        return citizenService.getCitizenById(id);
     }
 
     @PostMapping("")
@@ -36,10 +36,6 @@ public class CitizenController {
         return citizenService.postNewCitizen(newCitizen);
     }
 
-//    @PutMapping("/{id}")
-//    public User updateUser(@RequestBody User newUser, @PathVariable Long id){
-//        return userService.updateUser(newUser, id);
-//    }
 
     @DeleteMapping("/{id}")
     public void deleteCitizen(@PathVariable Long id){

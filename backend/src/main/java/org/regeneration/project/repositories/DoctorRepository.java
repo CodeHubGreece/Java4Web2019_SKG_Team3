@@ -3,6 +3,7 @@ package org.regeneration.project.repositories;
 import org.regeneration.project.dto.CitizenAppointmentDto;
 import org.regeneration.project.dto.DoctorAppointmentDto;
 import org.regeneration.project.dto.DoctorSpecialityDto;
+import org.regeneration.project.dto.UserDoctorDto;
 import org.regeneration.project.models.Doctor;
 import org.regeneration.project.models.Speciality;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +16,7 @@ import java.util.List;
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-    @Query("SELECT new org.regeneration.project.dto.DoctorAppointmentDto(a.appointmentDate, a.description, a.notes) "
+    @Query("SELECT new org.regeneration.project.dto.DoctorAppointmentDto(a.appointmentDate, a.description, a.notes, a.citizen, a.id) "
             + "FROM Doctor d LEFT JOIN d.appointments a WHERE d.id = :id")
     List<DoctorAppointmentDto> fetchEmpDeptDataLeftJoin(@Param("id") Long id);
 
@@ -25,4 +26,10 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
             + "FROM Doctor d LEFT JOIN d.speciality s WHERE d.id = :id")
     DoctorSpecialityDto fetchDoctorSpecialityLeftJoin(@Param("id") Long id);
 
+    @Query("SELECT new org.regeneration.project.dto.UserDoctorDto(u.firstName, u.lastName, u.username, d.id) "
+            + "FROM User u LEFT JOIN u.doctor d WHERE d.speciality.id = :speciality_id")
+    List<UserDoctorDto> fetchDoctorbySpecialityLeftJoin(@Param("speciality_id") Long speciality_id);
+
+
+    Doctor findDoctorIdById(Long doctorId);
 }

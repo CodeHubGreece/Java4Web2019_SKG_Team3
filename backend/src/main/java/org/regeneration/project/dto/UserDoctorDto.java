@@ -1,5 +1,7 @@
 package org.regeneration.project.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -7,13 +9,15 @@ public class UserDoctorDto implements Dto{
     private Long doctorId;
     private String userFirstName;
     private String userLastName;
+    private String userUsername;
     private String userType;
     private DoctorSpecialityDto doctorSpecialityDto;
     private List<DoctorAppointmentDto> doctorAppointmentDto;
 
-    public UserDoctorDto(String userFirstName, String userLastName, Long doctorId){
+    public UserDoctorDto(String userFirstName, String userLastName, String userUsername, Long doctorId){
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
+        this.userUsername = userUsername;
         this.doctorId = doctorId;
     }
 
@@ -49,6 +53,7 @@ public class UserDoctorDto implements Dto{
         this.doctorAppointmentDto = doctorAppointmentDto;
     }
 
+
     public Long getDoctorId() {
         return doctorId;
     }
@@ -63,5 +68,13 @@ public class UserDoctorDto implements Dto{
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getUserUsername() {
+        return userUsername;
+    }
+
+    public void setUserUsername(String userUsername) {
+        this.userUsername = userUsername;
     }
 }
