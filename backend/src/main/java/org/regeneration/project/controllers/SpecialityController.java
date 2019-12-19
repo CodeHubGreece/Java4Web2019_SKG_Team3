@@ -1,5 +1,6 @@
 package org.regeneration.project.controllers;
 
+import org.regeneration.project.models.Appointment;
 import org.regeneration.project.models.Speciality;
 import org.regeneration.project.services.SpecialityService;
 import org.springframework.beans.factory.annotation.Autowired;

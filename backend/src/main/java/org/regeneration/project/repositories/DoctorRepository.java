@@ -1,11 +1,10 @@
 package org.regeneration.project.repositories;
 
-import org.regeneration.project.dto.CitizenAppointmentDto;
 import org.regeneration.project.dto.DoctorAppointmentDto;
 import org.regeneration.project.dto.DoctorSpecialityDto;
 import org.regeneration.project.dto.UserDoctorDto;
+import org.regeneration.project.models.Appointment;
 import org.regeneration.project.models.Doctor;
-import org.regeneration.project.models.Speciality;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

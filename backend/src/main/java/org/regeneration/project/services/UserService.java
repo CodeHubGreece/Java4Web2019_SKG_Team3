@@ -52,37 +52,7 @@ public class UserService {
         }
     }
 
-    //POST NEW USER
-//    public User postNewUser(User newUser){
-//        return userRepository.save(newUser);
-//    }
 
-    //GET ONE USER
-//    public Optional<User> getOneUser(Long id){
-//        return userRepository.findById(id);
-//    }
-
-    //UPDATE ONE USER IF EXISTS OR INSERT INTO DB
-//    public void updateUser(User newUser, Long id){
-//        return userRepository.findById(id)
-////                .map(user -> {
-////                    user.setFirstName(newUser.setFirstName());
-////                    user.setLastName((newUser.setLastName()));
-////                    user.setUsername((newUser.getUsername()));
-////                    user.setPassword(newUser.getPassword());
-////                    user.setEmail(newUser.getEmail());
-////                    return userRepository.save(user);
-////                })
-////                .orElseGet(() -> {
-////                    newUser.setId(id);
-////                    return  userRepository.save(newUser);
-////                });
-//    }
-
-    //DELETE ONE USER
-//    public void deleteUser(Long id){
-//        userRepository.deleteById(id);
-//    }
 
     public UserCitizenDto fetchUserCitizenInnerJoin(String username) {
         return userRepository.fetchUserCitizenLeftJoin(username);

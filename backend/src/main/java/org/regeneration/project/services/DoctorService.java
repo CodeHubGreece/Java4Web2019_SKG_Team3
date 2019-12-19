@@ -2,6 +2,7 @@ package org.regeneration.project.services;
 
 
 import org.regeneration.project.dto.*;
+import org.regeneration.project.models.Appointment;
 import org.regeneration.project.models.Doctor;
 import org.regeneration.project.models.Speciality;
 import org.regeneration.project.repositories.DoctorRepository;

@@ -2,8 +2,7 @@ package org.regeneration.project.controllers;
 
 import org.regeneration.project.dto.CitizenAppointmentDto;
 import org.regeneration.project.dto.Dto;
-import org.regeneration.project.models.Citizen;
-import org.regeneration.project.models.User;
+import org.regeneration.project.models.*;
 import org.regeneration.project.services.CitizenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -21,6 +21,7 @@ public class CitizenAppointmentDto {
     private String doctorSpeciality;
     private Long doctorId;
     private Long appointmentId;
+    private Long specialityId;
 
 
     public CitizenAppointmentDto(Date appointmentDate, String description, String notes, Doctor doctor, Long appointmentId){
@@ -32,6 +33,7 @@ public class CitizenAppointmentDto {
         this.doctorSpeciality = doctor.getSpeciality().getName();
         this.doctorId = doctor.getId();
         this.appointmentId = appointmentId;
+        this.specialityId = doctor.getSpeciality().getId();
     }
 
     public Date getAppointmentDate() {
@@ -105,6 +107,14 @@ public class CitizenAppointmentDto {
 
     public void setAppointmentId(Long appointmentId) {
         this.appointmentId = appointmentId;
+    }
+
+    public Long getSpecialityId() {
+        return specialityId;
+    }
+
+    public void setSpecialityId(Long specialityId) {
+        this.specialityId = specialityId;
     }
 
 
