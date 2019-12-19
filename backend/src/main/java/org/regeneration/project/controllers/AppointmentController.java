@@ -50,7 +50,7 @@ public class AppointmentController {
 
 
     @PutMapping("/{id}")
-    public Optional<Appointment> updateAppointment(@RequestBody Appointment newAppointment, @RequestParam Long id){
+    public Optional<Appointment> updateAppointment(@RequestBody Appointment newAppointment, @PathVariable Long id){
         return appointmentService.updateAppointment(newAppointment, id);
     }
 

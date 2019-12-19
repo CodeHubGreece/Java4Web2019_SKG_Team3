@@ -1,3 +1,5 @@
+let appointments = [];
+
 $('document').ready(function(){
     const currentUser = JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER));
     const userDetailsParagraphs = document.querySelectorAll("#userDetails > p");
@@ -9,9 +11,9 @@ $('document').ready(function(){
     userDetailsParagraphs[5].innerHTML = currentUser.citizenSSN ? userDetailsParagraphs[5].innerHTML + " " + currentUser.citizenSSN : userDetailsParagraphs[5].innerHTML + " " + currentUser.ssn;
 
     const tableBody = document.querySelector("#table-body");
-    const appointments = currentUser.citizenAppointmentDto;
+    appointments = currentUser.citizenAppointmentDto;
 
-    appointments && appointments.map(function(appointment) {
+    appointments && appointments.map(function(appointment, index) {
 
         const datetime = new Date(appointment.appointmentDate);
         const dateString = datetime.toLocaleDateString(undefined, {
@@ -53,11 +55,11 @@ $('document').ready(function(){
         tableRow.appendChild(row);
 
         row = document.createElement("td");
-        row.innerHTML = "Edit";
+        row.innerHTML = "<button class='button is-info' onclick='showEditAppointmentForm(" + index + ");'>Edit</button>";
         tableRow.appendChild(row);
 
         row = document.createElement("td");
-        row.innerHTML = "Delete";
+        row.innerHTML = "<button class='button is-danger' onclick='deleteAppointment(" + index + ");'>Delete</button>";
         tableRow.appendChild(row);
 
         tableBody.appendChild(tableRow);
@@ -147,4 +149,69 @@ function createAppointment(doctorElement, datetimeElement, descriptionElement, n
         }
     });
 
+}
+
+function showEditAppointmentForm(index) {
+    const currentAppointment = appointments[index];
+
+    const datetimeElement = document.querySelector("#edit-datetime");
+    const descriptionElement = document.querySelector("#edit-description");
+    const notesElement = document.querySelector("#edit-notes");
+
+    const currentAppointmentDate = new Date(currentAppointment.appointmentDate).toISOString().slice(0, -8);
+    datetimeElement.setAttribute("value", currentAppointmentDate);
+    descriptionElement.innerText = currentAppointment.description;
+    notesElement.innerText = currentAppointment.notes;
+
+    document.querySelector("#edit-appointment-form").classList.add("is-active");
+
+    const submitEditBtn = document.querySelector("#edit-btn");
+    submitEditBtn.addEventListener("click", function() {
+        editAppointment(index, datetimeElement, descriptionElement, notesElement);
+    });
+}
+
+function editAppointment(index, datetimeElement, descriptionElement, notesElement) {
+    const currentAppointment = appointments[index];
+
+    let datetime = datetimeElement && datetimeElement.value ? datetimeElement.value : "";
+    let description = descriptionElement && descriptionElement.value ? descriptionElement.value : "";
+    let notes = notesElement && notesElement.value ? notesElement.value : "";
+
+    const data = { "appointmentDate": new Date(datetime).getTime(), description, notes };
+
+    $.ajax({
+        url: ROOT_PATH + '/appointment/' + currentAppointment.appointmentId,
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        type: 'PUT',
+        success: function(data) {
+            console.log(data);
+            getLoggedInUser();
+        },
+        error: function(error) {
+            console.error(error);
+            console.error("We had an error!");
+        }
+    });
+}
+
+function deleteAppointment(index) {
+    const currentAppointment = appointments[index];
+
+    $.ajax({
+        url: ROOT_PATH + '/appointment/' + currentAppointment.appointmentId,
+        processData: false,
+        contentType: false,
+        type: 'DELETE',
+        success: function(data) {
+            console.log(data);
+            getLoggedInUser();
+        },
+        error: function(error) {
+            console.error(error);
+            console.error("We had an error!");
+        }
+    });
 }

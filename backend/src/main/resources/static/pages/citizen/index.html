@@ -126,6 +126,39 @@
                     onclick="document.querySelector('.modal').classList.remove('is-active')">
             </button>
         </div>
+        <div class="modal" id="edit-appointment-form">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <form class="box">
+                    <h5 class="is-size-4 has-text-weight-semibold">Edit Your Appointment</h5>
+                    <div class="field">
+                        <label class="label" for="edit-datetime">Choose date & time</label>
+                        <div class="control">
+                            <input class="input" type="datetime-local" name="datetime" id="edit-datetime">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="edit-description" class="label">Description</label>
+                        <div class="control">
+                            <textarea class="textarea" name="description" id="edit-description"
+                                      placeholder="Enter a description here"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="edit-notes" class="label">Notes</label>
+                        <div class="control">
+                            <textarea class="textarea" name="notes" id="edit-notes"
+                                      placeholder="Enter special notes here"></textarea>
+                        </div>
+                    </div>
+                    <input type="button" class="button is-primary" value="Edit" id="edit-btn"
+                           onclick="editAppointment(datetime, description, notes);" />
+                </form>
+            </div>
+            <button class="modal-close is-large" aria-label="close"
+                    onclick="document.querySelector('.modal').classList.remove('is-active')">
+            </button>
+        </div>
     </section>
 </body>
 </html>
