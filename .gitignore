@@ -1,4 +1,4 @@
 .idea
-backend/target/
-backend/HELP.md
-frontend/node_modules/
+target/
+HELP.md
+.DS_Store
